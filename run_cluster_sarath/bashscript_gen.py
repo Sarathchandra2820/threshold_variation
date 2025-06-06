@@ -8,7 +8,7 @@ import os
 RUN = False  # Set to True to submit the job immediately
 
 # Name of the PLAMS script to be run
-script = "tv_benzene.py"
+script = "tv_sarath.py"
 start_av,end_av,step_av = 2,6,12
 start_ft,end_ft,step_ft = 8,15,12
 

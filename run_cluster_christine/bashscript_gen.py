@@ -8,13 +8,19 @@ import numpy as np
 RUN = False  # Set to True to submit the job immediately
 
 # Name of the PLAMS script to be run
-script = "tv_pyrdine.py"
-start_av,end_av,step_av = 2,6,0.1
-start_ft,end_ft,step_ft = 8,15,0.1
+script = "tv_christine.py"
+start_av,end_av,step_av = 2,6,12
+start_ft,end_ft,step_ft = 8,15,12
 
-molecules = ["pyridine"]
-add_virt_threshold = np.arange(start_av,end_av,step_av)
-frag_threshold = np.arange(start_ft,end_ft,step_ft)
+def linspace_list(start, stop, num):
+    if num == 1:
+        return [start]
+    step = (stop - start) / (num - 1)
+    return [round(start + i * step, 2) for i in range(num)]
+
+molecules = ["bezene"]
+add_virt_threshold = linspace_list(start_av,end_av,step_av)
+frag_threshold = linspace_list(start_ft,end_ft,step_ft)
 
 print(add_virt_threshold)
 print(frag_threshold)
