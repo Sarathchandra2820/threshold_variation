@@ -9,8 +9,12 @@ if len(sys.argv) != 4:
     sys.exit(1)
 
 molecule = sys.argv[1]  # Molecule type (pyrene, pyridine, ethylene)
-distance = float(sys.argv[2])  # Dimer separation distance
+add_virt_threshold = float(sys.argv[2])
+frag_th = float(sys.argv[3])  # Dimer separation distance
+method = "qsGW"
+theta = 180
 method = sys.argv[3]  # Calculation method (G0W0, evGW, TDDFT)
+distance = 3
 num_exc = 5
 
 init()
@@ -53,6 +57,22 @@ def get_coupled_excitations(results,symmetry='A -1 -1'):
         return eigenvalues, eigenvectors
     else:
         return []
+    
+
+def rotation_matrix(axis, angle_degrees):
+    """
+    Generate a 3x3 rotation matrix for a given axis and angle (in degrees).
+    """
+    angle = np.radians(angle_degrees)
+    axis = axis / np.linalg.norm(axis)
+    x, y, z = axis
+    cos = np.cos(angle)
+    sin = np.sin(angle)
+    return np.array([
+        [cos + x*x*(1 - cos),     x*y*(1 - cos) - z*sin, x*z*(1 - cos) + y*sin],
+        [y*x*(1 - cos) + z*sin,   cos + y*y*(1 - cos),   y*z*(1 - cos) - x*sin],
+        [z*x*(1 - cos) - y*sin,   z*y*(1 - cos) + x*sin, cos + z*z*(1 - cos)]
+    ])
     
 
 # Generic settings for all calculations, used like this for the moving fragment 2.
@@ -147,6 +167,8 @@ sm_settings.input.ADF.ExcitonTransfer.Localize = 'OccupiedAndVirtual'
 sm_settings.input.ADF.ExcitonTransfer.FullRun = ''
 sm_settings.input.ADF.ExcitonTransfer.SecondOrder = 'True'
 sm_settings.input.ADF.ExcitonTransfer.Output = 'AllAndFilteredCouplings'
+sm_settings.input.ADF.ExcitonTransfer.Additional_virtuals_cutoff = add_virt_threshold
+sm_settings.input.ADF.ExcitonTransfer.Frag_threshold = frag_th
 
 
 
@@ -179,10 +201,16 @@ frag1job.run()
 #sm_excitation_vectors = []
 #sm_excitation_couplings = []
 
+axis = ([1,0,0])
 
-geometry_file2 = f"geometry/{molecule}.xyz"
-frag2 = Molecule(geometry_file2)
+frag2 = frag1.copy()
 frag2.translate([distance,0.0,0.0])
+
+R = rotation_matrix(axis, angle)
+
+# Apply rotation
+frag2.rotate(R)  # This now works
+
 frag2job = AMSJob(molecule=frag2, settings=frag1_settings, name=f"frag2_{distance:.2f}")
 #frag2job = AMSJob(molecule=frag2, settings=settings, name=f"frag2_{distance}")
 frag2job.run()
@@ -225,6 +253,10 @@ np.savetxt(f"output_{distance}.txt", exci_energies)
 
 sm = frag1 + frag2
 print(sm)
+
+
+
+
 #smjob = AMSJob(molecule=sm, settings=sm_settings, name=f"sm_fragments_{distance:.2f}")
 smjob = AMSJob(molecule=sm, settings=sm_settings, name=f"sm_fragments")
 @add_to_instance(smjob)
@@ -244,7 +276,7 @@ exci_couplings = smjob.results.get_coupling_matrix()
 exci_couplings=exci_couplings.reshape((4*num_exc,4*num_exc))
 
 
-np.savetxt(f"output_{distance}.txt", exci_couplings)
+np.savetxt(f"output_{add_virt_threshold : .2f}_{frag_th : .2f}.txt", exci_couplings)
 
 finish()
 

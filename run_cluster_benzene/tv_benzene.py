@@ -167,6 +167,8 @@ sm_settings.input.ADF.ExcitonTransfer.Localize = 'OccupiedAndVirtual'
 sm_settings.input.ADF.ExcitonTransfer.FullRun = ''
 sm_settings.input.ADF.ExcitonTransfer.SecondOrder = 'True'
 sm_settings.input.ADF.ExcitonTransfer.Output = 'AllAndFilteredCouplings'
+sm_settings.input.ADF.ExcitonTransfer.Additional_virtuals_cutoff = add_virt_threshold
+sm_settings.input.ADF.ExcitonTransfer.Frag_threshold = frag_th
 
 
 
@@ -274,7 +276,7 @@ exci_couplings = smjob.results.get_coupling_matrix()
 exci_couplings=exci_couplings.reshape((4*num_exc,4*num_exc))
 
 
-np.savetxt(f"output_{distance}.txt", exci_couplings)
+np.savetxt(f"output_{add_virt_threshold : .2f}_{frag_th : .2f}.txt", exci_couplings)
 
 finish()
 
