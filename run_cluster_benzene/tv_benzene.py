@@ -9,7 +9,7 @@ if len(sys.argv) != 4:
     sys.exit(1)
 
 molecule = sys.argv[1]  # Molecule type (pyrene, pyridine, ethylene)
-add_threshold = float(sys.argv[2])
+add_virt_threshold = float(sys.argv[2])
 frag_th = float(sys.argv[3])  # Dimer separation distance
 method = "qsGW"
 theta = 180
