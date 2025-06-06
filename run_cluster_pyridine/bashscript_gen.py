@@ -1,4 +1,5 @@
 import os
+import numpy as np
 
 #######################
 ### User parameters ###
@@ -7,22 +8,22 @@ import os
 RUN = False  # Set to True to submit the job immediately
 
 # Name of the PLAMS script to be run
-script = "gwrose_script_chlorophyl.py"
+script = "tv_pyrdine.py"
+start_av,end_av,step_av = 2,6,0.1
+start_ft,end_ft,step_ft = 8,15,0.1
 
-# Define the molecules, methods, and dimer separations
-#molecules = ["ethylene"]#,"pyrene", "pyridine"]
-#molecules = ["ethylene"]
-molecules = ["chlorophyl"]
-methods = ["qsGW"]#,"qsGW","TDDFT"]
-#distances = [3.0, 4.0, 5.0, 6.0, 8.0, 10.0]  # Corresponds to dimer separations
-#distances = [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0 , 12.0 , 13.0 , 14.0]
-distances = [3.0]
+molecules = ["pyridine"]
+add_virt_threshold = np.arange(start_av,end_av,step_av)
+frag_threshold = np.arange(start_ft,end_ft,step_ft)
 
-# Output directory
-cluster_info = "/scistor/tc/huw587" #Input of cluster 
+print(add_virt_threshold)
+print(frag_threshold)
 
-output_name = "chl_dim_qsgw_occvirt"
-outdir = f"{cluster_info}/RoseADF_Notebooks/"
+# # Output directory
+cluster_info = "/scistor/tc/huw587" #Input of cluster  threshold_variation 
+
+output_name = "threshold_output"
+outdir = f"{cluster_info}/threshold_variation/"
 outdirmain = f"{cluster_info}/{output_name}"
 outdir1 = f"{outdirmain}/workdirs"
 outdir_coupling = f"{outdirmain}/coupling_mat"
@@ -35,7 +36,7 @@ mem = ""             # Memory allocation
 partition = "tc"         # Partition namex
 
 # Compute the total number of jobs
-num_jobs = len(molecules) * len(methods) * len(distances)
+num_jobs = len(molecules) * len(add_virt_threshold) * len(frag_threshold)
 
 # Additional setup commands
 additional_lines = [
@@ -85,29 +86,28 @@ with open(job_file, 'wt') as fh:
             "echo $TMPDIR\n",
             "unset SLURM_JOB_ID\n",
             "cd $TMPDIR\n",
-            f"cp -rfv {outdir}/{script} {outdir}/geometry $TMPDIR\n",
+            f"cp -rfv {outdir}/run_cluster_christine/{script} {outdir}/geometry $TMPDIR\n",
             "\n"
             "# Compute molecule, method, and separation index\n",
-            f"molecule_index=$((SLURM_ARRAY_TASK_ID / ({len(methods)} * {len(distances)})))\n",
-            f"method_index=$(( (SLURM_ARRAY_TASK_ID / {len(distances)}) % {len(methods)} ))\n",
-            f"dist_index=$((SLURM_ARRAY_TASK_ID % {len(distances)}))\n",
+            f"molecule_index=$((SLURM_ARRAY_TASK_ID / ({len(add_virt_threshold)} * {len(frag_threshold)})))\n",
+            f"av_index=$(( (SLURM_ARRAY_TASK_ID / {len(frag_threshold)}) % {len(add_virt_threshold)} ))\n",
+            f"ft_index=$((SLURM_ARRAY_TASK_ID % {len(frag_threshold)}))\n",
             f"molecules=({' '.join(molecules)})\n",
-            f"methods=({' '.join(methods)})\n",
-            f"distances=({' '.join(map(str, distances))})\n",
+            f"av=({' '.join(add_virt_threshold)})\n",
+            f"ft=({' '.join(map(str, frag_threshold))})\n",
             "molecule=${molecules[$molecule_index]}\n",
-            "method=${methods[$method_index]}\n",
-            "distance=${distances[$dist_index]}\n",
+            "add_virt_thr=${av[$av_index]}\n",
+            "frag_thr=${ft[$ft_index]}\n",
             "\n",
-            f"$AMSBIN/amspython -u {script} $molecule $distance $method\n",
-            f"mv plams_workdir plams_workdir_${{molecule}}_${{method}}_${{distance}}\n",
-            f"mkdir -pv {outdir1}/$molecule/$method\n",
-            f"mkdir -pv {outdir_coupling}/$molecule/$method\n",
-            f"cp -rfv plams_workdir_${{molecule}}_${{method}}_${{distance}} {outdir1}/$molecule/$method\n",
-            f"cp -rfv output* {outdir_coupling}/$molecule/$method\n"
+            f"$AMSBIN/amspython -u {script} $molecule $add_virt_thr $frag_thr\n",
+            f"mv plams_workdir plams_workdir_${{molecule}}_${{add_virt_thr}}_${{frag_thr}}\n",
+            f"mkdir -pv {outdir1}/$molecule/$add_virt_thr\n",
+            f"mkdir -pv {outdir_coupling}/$molecule/$add_virt_thr\n",
+            f"cp -rfv plams_workdir_${{molecule}}_${{add_virt_thr}}_${{frag_thr}} {outdir1}/$molecule/$add_virt_thr\n",
+            f"cp -rfv output* {outdir_coupling}/$molecule/$add_virt_thr\n"
         ]
     )
 
 if RUN:
     os.system("sbatch " + job_file)
-
 
