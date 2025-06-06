@@ -1,3 +1,4 @@
+
 import os
 import numpy as np
 
@@ -20,7 +21,8 @@ print(add_virt_threshold)
 print(frag_threshold)
 
 # # Output directory
-cluster_info = "/scistor/tc/huw587" #Input of cluster  threshold_variation 
+cluster_info = "/scistor/tc/kbi163" #Input of cluster  threshold_variation 
+
 
 output_name = "threshold_output"
 outdir = f"{cluster_info}/threshold_variation/"
