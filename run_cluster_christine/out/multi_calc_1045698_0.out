@@ -1,0 +1,86 @@
+/scratch/1045699
+'/scistor/tc/kbi163/threshold_variation/run_cluster_christine/tv_christine.py' -> '/scratch/1045699/tv_christine.py'
+'/scistor/tc/kbi163/threshold_variation/geometry' -> '/scratch/1045699/geometry'
+'/scistor/tc/kbi163/threshold_variation/geometry/benzene.xyz' -> '/scratch/1045699/geometry/benzene.xyz'
+'/scistor/tc/kbi163/threshold_variation/geometry/ethylene.xyz' -> '/scratch/1045699/geometry/ethylene.xyz'
+'/scistor/tc/kbi163/threshold_variation/geometry/pyridine.xyz' -> '/scratch/1045699/geometry/pyridine.xyz'
+PLAMS working folder: /scratch/1045699/plams_workdir
+  Atoms: 
+    1         C       0.654135       0.126134       0.030228
+    2         C      -0.654135      -0.126134      -0.030228
+    3         H      -1.395752       0.666556       0.086105
+    4         H       1.035161       1.135297       0.198437
+    5         H       1.395752      -0.666556      -0.086105
+    6         H      -1.035161      -1.135297      -0.198437
+
+[07.06|21:50:35] JOB fragment_1 STARTED
+[07.06|21:50:35] JOB fragment_1 RUNNING
+[07.06|21:51:54] JOB fragment_1 FINISHED
+[07.06|21:51:54] JOB fragment_1 SUCCESSFUL
+[07.06|21:51:54] JOB frag2_3.00 STARTED
+[07.06|21:51:54] JOB frag2_3.00 RUNNING
+[07.06|21:53:09] JOB frag2_3.00 FINISHED
+[07.06|21:53:09] JOB frag2_3.00 SUCCESSFUL
+  Atoms: 
+    1         C       0.654135       0.126134       0.030228
+    2         C      -0.654135      -0.126134      -0.030228
+    3         H      -1.395752       0.666556       0.086105
+    4         H       1.035161       1.135297       0.198437
+    5         H       1.395752      -0.666556      -0.086105
+    6         H      -1.035161      -1.135297      -0.198437
+    7         C       3.654135      -0.126134      -0.030228
+    8         C       2.345865       0.126134       0.030228
+    9         H       1.604248      -0.666556      -0.086105
+   10         H       4.035161      -1.135297      -0.198437
+   11         H       4.395752       0.666556       0.086105
+   12         H       1.964839       1.135297       0.198437
+
+[07.06|21:53:09] JOB sm_fragments STARTED
+[07.06|21:53:09] JOB sm_fragments RUNNING
+[07.06|22:16:14] JOB sm_fragments FINISHED
+[07.06|22:16:14] JOB sm_fragments SUCCESSFUL
+PLAMS run finished. Goodbye
+'plams_workdir_ethylene_2.0_8.0/logfile' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/logfile'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.in' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.in'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.run' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.run'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.err' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.err'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.out' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.out'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.dill' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/fragment_1.dill'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/CreateAtoms.out' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/CreateAtoms.out'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/t12.rel' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/t12.rel'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/TAPE15' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/TAPE15'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/ams.log' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/ams.log'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/ams.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/ams.rkf'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/adf.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/adf.rkf'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/t21.1B6EB9F3.H' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/t21.1B6EB9F3.H'
+'plams_workdir_ethylene_2.0_8.0/fragment_1/t21.7481FE8D.C' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/fragment_1/t21.7481FE8D.C'
+'plams_workdir_ethylene_2.0_8.0/job_logfile.csv' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/job_logfile.csv'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.in' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.in'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.run' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.run'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.err' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.err'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.out' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.out'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.dill' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/frag2_3.00.dill'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/CreateAtoms.out' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/CreateAtoms.out'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/t12.rel' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/t12.rel'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/TAPE15' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/TAPE15'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/ams.log' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/ams.log'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/ams.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/ams.rkf'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/adf.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/adf.rkf'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/t21.1B6EB9F3.H' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/t21.1B6EB9F3.H'
+'plams_workdir_ethylene_2.0_8.0/frag2_3.00/t21.7481FE8D.C' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/frag2_3.00/t21.7481FE8D.C'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/frag1.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/frag1.rkf'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/frag2.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/frag2.rkf'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.in' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.in'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.run' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.run'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.err' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.err'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.out' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.out'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.dill' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/sm_fragments.dill'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/CreateAtoms.out' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/CreateAtoms.out'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/t12.rel' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/t12.rel'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/TAPE15' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/TAPE15'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/ams.log' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/ams.log'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/ams.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/ams.rkf'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/t21.7481FE8D.C' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/t21.7481FE8D.C'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/t21.1B6EB9F3.H' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/t21.1B6EB9F3.H'
+'plams_workdir_ethylene_2.0_8.0/sm_fragments/adf.rkf' -> '/scistor/tc/kbi163/threshold_output/workdirs/ethylene/2.0/plams_workdir_ethylene_2.0_8.0/sm_fragments/adf.rkf'
+'output_ 2.00_ 8.00.txt' -> '/scistor/tc/kbi163/threshold_output/coupling_mat/ethylene/2.0/output_ 2.00_ 8.00.txt'

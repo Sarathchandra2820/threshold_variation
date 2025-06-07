@@ -1,4 +1,5 @@
 import numpy as np
+import math
 #import scm.plams
 #from scm import plams
 from scm.plams import *
@@ -11,9 +12,9 @@ if len(sys.argv) != 4:
 molecule = sys.argv[1]  # Molecule type (pyrene, pyridine, ethylene)
 add_virt_threshold = float(sys.argv[2])
 frag_th = float(sys.argv[3])  # Dimer separation distance
-method = "qsGW"
+#method = "qsGW"
 theta = 180
-method = sys.argv[3]  # Calculation method (G0W0, evGW, TDDFT)
+method = "qsGW"  # Calculation method (G0W0, evGW, TDDFT)
 distance = 3
 num_exc = 5
 
@@ -155,6 +156,9 @@ refsm_settings.input.ADF.MODIFYEXCITATION.UseOccVirtRange = '0 1'
 # Supermolecule (without symmetry) settings with intrinsic fragment orbitals
 sm_settings = refsm_settings.copy()
 sm_settings.input.ADF.Rose.nfragments = 2
+sm_settings.input.ADF.Rose.Additional_virtuals_cutoff = add_virt_threshold
+sm_settings.input.ADF.Rose.Frag_threshold = frag_th
+
 
 if method in ["G0W0", "evGW"]:  # Correct condition check
     sm_settings.input.ADF.Rose.GWenergies = ''
@@ -167,8 +171,6 @@ sm_settings.input.ADF.ExcitonTransfer.Localize = 'OccupiedAndVirtual'
 sm_settings.input.ADF.ExcitonTransfer.FullRun = ''
 sm_settings.input.ADF.ExcitonTransfer.SecondOrder = 'True'
 sm_settings.input.ADF.ExcitonTransfer.Output = 'AllAndFilteredCouplings'
-sm_settings.input.ADF.ExcitonTransfer.Additional_virtuals_cutoff = add_virt_threshold
-sm_settings.input.ADF.ExcitonTransfer.Frag_threshold = frag_th
 
 
 
@@ -206,7 +208,7 @@ axis = ([1,0,0])
 frag2 = frag1.copy()
 frag2.translate([distance,0.0,0.0])
 
-R = rotation_matrix(axis, angle)
+R = rotation_matrix(axis, theta)
 
 # Apply rotation
 frag2.rotate(R)  # This now works

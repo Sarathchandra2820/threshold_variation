@@ -1,6 +1,6 @@
 
 import os
-import numpy as np
+#import numpy as np
 
 #######################
 ### User parameters ###
@@ -10,8 +10,8 @@ RUN = False  # Set to True to submit the job immediately
 
 # Name of the PLAMS script to be run
 script = "tv_christine.py"
-start_av,end_av,step_av = 2,6,12
-start_ft,end_ft,step_ft = 8,15,12
+start_av,end_av,step_av = 2,6,2
+start_ft,end_ft,step_ft = 8,15,2
 
 def linspace_list(start, stop, num):
     if num == 1:
@@ -19,7 +19,7 @@ def linspace_list(start, stop, num):
     step = (stop - start) / (num - 1)
     return [round(start + i * step, 2) for i in range(num)]
 
-molecules = ["bezene"]
+molecules = ["ethylene"]
 add_virt_threshold = linspace_list(start_av,end_av,step_av)
 frag_threshold = linspace_list(start_ft,end_ft,step_ft)
 
@@ -38,7 +38,7 @@ outdir_coupling = f"{outdirmain}/coupling_mat"
 
 
 # SLURM Job parameters
-njobs = 2               # Max concurrent jobs
+njobs = 8               # Max concurrent jobs
 time = "10-00:00:00"      # Walltime
 mem = ""             # Memory allocation
 partition = "tc"         # Partition namex
@@ -94,15 +94,15 @@ with open(job_file, 'wt') as fh:
             "echo $TMPDIR\n",
             "unset SLURM_JOB_ID\n",
             "cd $TMPDIR\n",
-            f"cp -rfv {outdir}/run_cluster_christine/{script} {outdir}/geometry $TMPDIR\n",
+            f"cp -rfv {outdir}run_cluster_christine/{script} {outdir}geometry $TMPDIR\n",
             "\n"
             "# Compute molecule, method, and separation index\n",
             f"molecule_index=$((SLURM_ARRAY_TASK_ID / ({len(add_virt_threshold)} * {len(frag_threshold)})))\n",
             f"av_index=$(( (SLURM_ARRAY_TASK_ID / {len(frag_threshold)}) % {len(add_virt_threshold)} ))\n",
             f"ft_index=$((SLURM_ARRAY_TASK_ID % {len(frag_threshold)}))\n",
             f"molecules=({' '.join(molecules)})\n",
-            f"av=({' '.join(add_virt_threshold)})\n",
-            f"ft=({' '.join(map(str, frag_threshold))})\n",
+            f"av=({' '.join(map(str,add_virt_threshold))})\n",
+            f"ft=({' '.join(map(str,frag_threshold))})\n",
             "molecule=${molecules[$molecule_index]}\n",
             "add_virt_thr=${av[$av_index]}\n",
             "frag_thr=${ft[$ft_index]}\n",
