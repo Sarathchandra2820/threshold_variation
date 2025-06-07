@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "tv_christine.py", line 277, in <module>
-    exci_couplings=exci_couplings.reshape((4*num_exc,4*num_exc))
-AttributeError: 'list' object has no attribute 'reshape'
-cp: cannot stat 'output*': No such file or directory
