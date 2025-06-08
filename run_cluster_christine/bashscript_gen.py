@@ -19,7 +19,7 @@ def linspace_list(start, stop, num):
     step = (stop - start) / (num - 1)
     return [round(start + i * step, 2) for i in range(num)]
 
-molecules = ["ethylene"]
+molecules = ["pyridine"]
 add_virt_threshold = linspace_list(start_av,end_av,step_av)
 frag_threshold = linspace_list(start_ft,end_ft,step_ft)
 
@@ -30,7 +30,7 @@ print(frag_threshold)
 cluster_info = "/scistor/tc/kbi163" #Input of cluster  threshold_variation 
 
 
-output_name = "threshold_output"
+output_name = "threshold_output_same"
 outdir = f"{cluster_info}/threshold_variation/"
 outdirmain = f"{cluster_info}/{output_name}"
 outdir1 = f"{outdirmain}/workdirs"
