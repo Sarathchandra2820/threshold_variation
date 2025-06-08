@@ -1,0 +1,45 @@
+#!/bin/bash
+#SBATCH --job-name=multi_calc
+#SBATCH --output=/net/sys/pscst001/export/tc/kbi163/threshold_variation/run_cluster_christine/out/multi_calc_%A_%a.out
+#SBATCH --error=/net/sys/pscst001/export/tc/kbi163/threshold_variation/run_cluster_christine/err/multi_calc_%A_%a.err
+#SBATCH --time=10-00:00:00
+#SBATCH --partition=tc
+#SBATCH --ntasks-per-node=32
+#SBATCH --ntasks-per-core=1
+#SBATCH -N 1
+#SBATCH --mail-type=NONE
+#SBATCH --array=0-3%8
+module purge
+module load shared
+module load 2024
+module load slurm
+module load intel/mkl/64/2020/4.304
+module load Python/3.11.5-GCCcore-13.2.0
+export SCM_TMPDIR="$TMPDIR"
+export AMSHOME="/scistor/tc/afr790/amshome"
+export AMSBIN="/scistor/tc/afr790/amshome/bin"
+export AMSRESOURCES="$AMSHOME/atomicdata"
+export SCMLICENSE="/scistor/tc/huw587/ADF_trunk/license.txt"
+mkdir -pv /scistor/tc/kbi163/threshold_variation/
+echo $TMPDIR
+unset SLURM_JOB_ID
+cd $TMPDIR
+cp -rfv /scistor/tc/kbi163/threshold_variation/run_cluster_christine/tv_christine.py /scistor/tc/kbi163/threshold_variation/geometry $TMPDIR
+
+# Compute molecule, method, and separation index
+molecule_index=$((SLURM_ARRAY_TASK_ID / (2 * 2)))
+av_index=$(( (SLURM_ARRAY_TASK_ID / 2) % 2 ))
+ft_index=$((SLURM_ARRAY_TASK_ID % 2))
+molecules=(pyridine)
+av=(2.0 6.0)
+ft=(8.0 15.0)
+molecule=${molecules[$molecule_index]}
+add_virt_thr=${av[$av_index]}
+frag_thr=${ft[$ft_index]}
+
+$AMSBIN/amspython -u tv_christine.py $molecule $add_virt_thr $frag_thr
+mv plams_workdir plams_workdir_${molecule}_${add_virt_thr}_${frag_thr}
+mkdir -pv /scistor/tc/kbi163/threshold_output_pyridine_0/workdirs/$molecule/$add_virt_thr
+mkdir -pv /scistor/tc/kbi163/threshold_output_pyridine_0/coupling_mat/$molecule/$add_virt_thr
+cp -rfv plams_workdir_${molecule}_${add_virt_thr}_${frag_thr} /scistor/tc/kbi163/threshold_output_pyridine_0/workdirs/$molecule/$add_virt_thr
+cp -rfv output* /scistor/tc/kbi163/threshold_output_pyridine_0/coupling_mat/$molecule/$add_virt_thr

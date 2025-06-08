@@ -30,7 +30,7 @@ print(frag_threshold)
 cluster_info = "/scistor/tc/kbi163" #Input of cluster  threshold_variation 
 
 
-output_name = "threshold_output_pyridine_0"
+output_name = "threshold_output_pyridine_180"
 outdir = f"{cluster_info}/threshold_variation/"
 outdirmain = f"{cluster_info}/{output_name}"
 outdir1 = f"{outdirmain}/workdirs"

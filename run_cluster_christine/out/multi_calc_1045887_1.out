@@ -1,0 +1,22 @@
+/scratch/1045889
+'/scistor/tc/kbi163/threshold_variation/run_cluster_christine/tv_christine.py' -> '/scratch/1045889/tv_christine.py'
+'/scistor/tc/kbi163/threshold_variation/geometry' -> '/scratch/1045889/geometry'
+'/scistor/tc/kbi163/threshold_variation/geometry/benzene.xyz' -> '/scratch/1045889/geometry/benzene.xyz'
+'/scistor/tc/kbi163/threshold_variation/geometry/ethylene.xyz' -> '/scratch/1045889/geometry/ethylene.xyz'
+'/scistor/tc/kbi163/threshold_variation/geometry/pyridine.xyz' -> '/scratch/1045889/geometry/pyridine.xyz'
+PLAMS working folder: /scratch/1045889/plams_workdir
+  Atoms: 
+    1         H       0.000000       2.061947       1.308539
+    2         H       0.000000      -2.061947       1.308539
+    3         H       0.000000       2.156804      -1.184054
+    4         H       0.000000      -2.156804      -1.184054
+    5         H       0.000000       0.000000      -2.475074
+    6         C       0.000000       1.145417       0.721005
+    7         C       0.000000      -1.145417       0.721005
+    8         C       0.000000       1.197637      -0.673735
+    9         C       0.000000      -1.197637      -0.673735
+   10         C       0.000000       0.000000      -1.387901
+   11         N       0.000000       0.000000       1.426610
+
+[08.06|17:05:14] JOB fragment_1 STARTED
+[08.06|17:05:14] JOB fragment_1 RUNNING
